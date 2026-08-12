@@ -11,10 +11,11 @@ RUN apt-get update && apt-get install -y \
     curl \
     nodejs \
     npm \
-    libsqlite3-dev
+    libsqlite3-dev \
+    libpq-dev
 
-# Install PHP extensions for Laravel & database support (MySQL + SQLite)
-RUN docker-php-ext-install pdo_mysql pdo_sqlite mbstring exif pcntl bcmath gd
+# Install PHP extensions for Laravel & database support (MySQL + PostgreSQL + SQLite)
+RUN docker-php-ext-install pdo_mysql pdo_pgsql pdo_sqlite mbstring exif pcntl bcmath gd
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
