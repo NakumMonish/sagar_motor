@@ -1,8 +1,15 @@
+{{-- Mobile Sidebar Overlay Backdrop --}}
+<div id="sidebar-backdrop" class="fixed inset-0 bg-black/50 z-40 lg:hidden hidden" onclick="toggleSidebar()"></div>
+
 {{-- Sidebar Component --}}
-<aside class="w-64 h-screen bg-slate-900 border-r border-slate-800 text-slate-300 flex flex-col justify-between shrink-0 overflow-y-auto no-print shadow-xl sticky top-0">
+<aside id="app-sidebar" class="fixed lg:static w-64 h-screen bg-slate-900 border-r border-slate-800 text-slate-300 flex flex-col justify-between shrink-0 overflow-y-auto no-print shadow-xl z-50 transition-transform duration-300 -translate-x-full lg:translate-x-0">
     <div>
         {{-- Brand Logo Header --}}
         <div class="p-6 border-b border-slate-800 text-center bg-slate-950/50 sticky top-0 z-10">
+            {{-- Mobile Close Button --}}
+            <button class="lg:hidden absolute top-3 right-3 p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors" onclick="toggleSidebar()">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
             <a href="{{ route('dashboard') }}" class="block group">
                 <img src="{{ asset('images/logo.png') }}" alt="Sagar Motors Shield Logo"
                      class="h-20 w-auto mx-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200">
@@ -63,3 +70,14 @@
         </div>
     </div>
 </aside>
+
+{{-- Sidebar Toggle Script --}}
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('app-sidebar');
+        const backdrop = document.getElementById('sidebar-backdrop');
+        sidebar.classList.toggle('-translate-x-full');
+        backdrop.classList.toggle('hidden');
+    }
+</script>
+

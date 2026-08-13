@@ -48,7 +48,7 @@
         @endif
 
         {{-- Page Content --}}
-        <main class="flex-1 p-6 max-w-7xl w-full mx-auto">
+        <main class="flex-1 p-4 sm:p-6 max-w-7xl w-full mx-auto">
             @yield('content')
         </main>
 
